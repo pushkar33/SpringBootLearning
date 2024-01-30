@@ -2,43 +2,40 @@ package com.pugapa.practiceproject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
+// Spring can scan properties provided in application.properties only .
+// Inorder to read properties defined in other files we need to provide PropertySource
+// @PropertySource("classpath:custom.properties")
+
+// Inorder to provide multiple PropertySources
+@PropertySources({
+        @PropertySource("classpath:custom.properties"),
+        @PropertySource("classpath:custom2.properties")
+})
+
 public class MyFirstService {
 
-    // Field bean injection
-//    @Autowired @Qualifier("mySecondClass")
-    private MyFirstClass myFirstClass;
+    private final MyFirstClass myFirstClass;
 
-    // Environment Bean
-    private Environment environment;
+    @Value("${my.custom.property}")
+    private String myProp;
+
+    @Value("${my.prop}")
+    private String customProp;
+
+    @Value("${my.prop2}")
+    private String customProp2;
 
     // Constructor bean injection
-//    public MyFirstService(@Qualifier("myFirstClass") MyFirstClass myFirstClass)
-//    {
-//        this.myFirstClass=myFirstClass;
-//    }
-
-    // Method bean injection
-//   @Autowired
-//    public void injectDependencies(@Qualifier("mySecondClass") MyFirstClass myFirstClass)
-//    {
-//        this.myFirstClass=myFirstClass;
-//    }
-
-    // Setter bean injection
-    @Autowired
-    public void setMyFirstClass(@Qualifier("mySecondClass") MyFirstClass myFirstClass)
+    public MyFirstService(@Qualifier("myFirstClass") MyFirstClass myFirstClass)
     {
         this.myFirstClass=myFirstClass;
-    }
-
-    @Autowired
-    public void setEnvironment(Environment environment)
-    {
-        this.environment=environment;
     }
 
     public String tellAStory()
@@ -46,18 +43,19 @@ public class MyFirstService {
       return "the dependency is saying "+myFirstClass.sayHello();
     }
 
-    public String getJavaVersion()
+    public String getMyProp()
     {
-        return environment.getProperty("java.version");
+        return myProp;
     }
 
-    public String getOSName()
+    public String getCustomProp()
     {
-        return environment.getProperty("os.name");
+        return customProp;
     }
 
-    public String getCustomProperty()
+    public String getCustomProp2()
     {
-        return environment.getProperty("my.custom.property");
+        return customProp2;
     }
+
 }

@@ -12,9 +12,9 @@ public class PracticeprojectApplication {
 		ConfigurableApplicationContext context=SpringApplication.run(PracticeprojectApplication.class, args);
 		MyFirstService mfc=context.getBean(MyFirstService.class);
 		System.out.println(mfc.tellAStory());
-		System.out.println(mfc.getJavaVersion());
-		System.out.println(mfc.getOSName());
-		System.out.println(mfc.getCustomProperty());
+		System.out.println(mfc.getMyProp());
+		System.out.println(mfc.getCustomProp());
+		System.out.println(mfc.getCustomProp2());
 	}
 
 }
