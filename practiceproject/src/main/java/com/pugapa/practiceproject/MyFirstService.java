@@ -26,6 +26,9 @@ public class MyFirstService {
     @Value("${my.custom.property}")
     private String myProp;
 
+    @Value("${my.custom.property.int}")
+    private Integer myIntProp;
+
     @Value("${my.prop}")
     private String customProp;
 
@@ -48,6 +51,8 @@ public class MyFirstService {
         return myProp;
     }
 
+    public Integer getMyIntProp(){return myIntProp;}
+
     public String getCustomProp()
     {
         return customProp;
@@ -57,5 +62,6 @@ public class MyFirstService {
     {
         return customProp2;
     }
+
 
 }

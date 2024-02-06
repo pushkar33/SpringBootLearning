@@ -13,6 +13,7 @@ public class PracticeprojectApplication {
 		MyFirstService mfc=context.getBean(MyFirstService.class);
 		System.out.println(mfc.tellAStory());
 		System.out.println(mfc.getMyProp());
+		System.out.println(mfc.getMyIntProp());
 		System.out.println(mfc.getCustomProp());
 		System.out.println(mfc.getCustomProp2());
 	}
