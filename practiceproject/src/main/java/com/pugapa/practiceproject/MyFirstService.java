@@ -36,7 +36,7 @@ public class MyFirstService {
     private String customProp2;
 
     // Constructor bean injection
-    public MyFirstService(@Qualifier("myFirstClass") MyFirstClass myFirstClass)
+    public MyFirstService(@Qualifier("Bean1") MyFirstClass myFirstClass)
     {
         this.myFirstClass=myFirstClass;
     }
