@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class SchoolController {
@@ -19,15 +20,29 @@ public class SchoolController {
     }
 
    @PostMapping("/schools")
-    public School create(@RequestBody School school)
+    public SchoolDto create(@RequestBody SchoolDto dto)
    {
-      return schoolRepository.save(school);
+       var school=toSchool(dto);
+       schoolRepository.save(school);
+       return dto;
+   }
+
+   private School toSchool(SchoolDto dto)
+   {
+       School school=new School();
+       school.setName(dto.name());
+       return school;
+   }
+
+   private SchoolDto toSchoolDto(School school)
+   {
+        return new SchoolDto(school.getName());
    }
 
    @GetMapping("/schools")
-   public List<School> getSchools()
+   public List<SchoolDto> getSchools()
    {
-       return schoolRepository.findAll();
+       return schoolRepository.findAll().stream().map(this::toSchoolDto).collect(Collectors.toList());
    }
 
 }
