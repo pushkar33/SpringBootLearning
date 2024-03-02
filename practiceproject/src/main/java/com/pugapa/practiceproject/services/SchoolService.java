@@ -3,10 +3,12 @@ package com.pugapa.practiceproject.services;
 import com.pugapa.practiceproject.school.SchoolDto;
 import com.pugapa.practiceproject.school.SchoolMapper;
 import com.pugapa.practiceproject.repositories.SchoolRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class SchoolService {
 
     private final SchoolRepository schoolRepository;
