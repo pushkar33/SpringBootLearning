@@ -1,6 +1,8 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.pugapa.practiceproject.school.School;
+import com.pugapa.practiceproject.studentprofile.StudentProfile;
 import jakarta.persistence.*;
 
 @Entity

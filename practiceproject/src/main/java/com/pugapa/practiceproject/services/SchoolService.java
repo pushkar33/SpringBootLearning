@@ -1,11 +1,8 @@
 package com.pugapa.practiceproject.services;
 
-import com.pugapa.practiceproject.SchoolDto;
-import com.pugapa.practiceproject.SchoolMapper;
+import com.pugapa.practiceproject.school.SchoolDto;
+import com.pugapa.practiceproject.school.SchoolMapper;
 import com.pugapa.practiceproject.repositories.SchoolRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;

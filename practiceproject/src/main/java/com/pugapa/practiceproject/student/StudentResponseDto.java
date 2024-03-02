@@ -1,4 +1,4 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.student;
 
 public record StudentResponseDto(
         String firstname,

@@ -1,6 +1,5 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.school;
 
-import com.pugapa.practiceproject.repositories.SchoolRepository;
 import com.pugapa.practiceproject.services.SchoolService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class SchoolController {

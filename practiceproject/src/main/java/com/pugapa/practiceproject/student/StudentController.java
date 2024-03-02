@@ -1,6 +1,5 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.student;
 
-import com.pugapa.practiceproject.repositories.StudentRepository;
 import com.pugapa.practiceproject.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

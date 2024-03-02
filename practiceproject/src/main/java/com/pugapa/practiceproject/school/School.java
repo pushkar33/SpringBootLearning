@@ -1,6 +1,7 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.school;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.pugapa.practiceproject.student.Student;
 import jakarta.persistence.*;
 
 import java.util.List;

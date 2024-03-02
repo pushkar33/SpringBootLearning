@@ -1,6 +1,7 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.student;
 
 
+import com.pugapa.practiceproject.school.School;
 import org.springframework.stereotype.Service;
 
 @Service

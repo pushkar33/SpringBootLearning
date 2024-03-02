@@ -1,13 +1,11 @@
 package com.pugapa.practiceproject.services;
 
-import com.pugapa.practiceproject.Student;
-import com.pugapa.practiceproject.StudentDto;
-import com.pugapa.practiceproject.StudentMapper;
-import com.pugapa.practiceproject.StudentResponseDto;
+import com.pugapa.practiceproject.student.Student;
+import com.pugapa.practiceproject.student.StudentDto;
+import com.pugapa.practiceproject.student.StudentMapper;
+import com.pugapa.practiceproject.student.StudentResponseDto;
 import com.pugapa.practiceproject.repositories.StudentRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;

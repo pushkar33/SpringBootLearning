@@ -1,4 +1,4 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.school;
 
 public record SchoolDto(
         String name

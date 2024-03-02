@@ -1,5 +1,6 @@
-package com.pugapa.practiceproject;
+package com.pugapa.practiceproject.studentprofile;
 
+import com.pugapa.practiceproject.student.Student;
 import jakarta.persistence.*;
 
 @Entity
