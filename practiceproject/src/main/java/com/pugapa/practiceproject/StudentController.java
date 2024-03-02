@@ -1,6 +1,7 @@
 package com.pugapa.practiceproject;
 
 import com.pugapa.practiceproject.repositories.StudentRepository;
+import com.pugapa.practiceproject.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,62 +10,41 @@ import java.util.List;
 @RestController
 public class StudentController {
 
-    private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-    public StudentController(StudentRepository studentRepository)
+    public StudentController(StudentService studentService)
     {
-        this.studentRepository=studentRepository;
+      this.studentService=studentService;
     }
 
     @PostMapping("/students")
-    public StudentResponseDto createStudent(@RequestBody StudentDto dto)
+    public StudentResponseDto saveStudent(@RequestBody StudentDto dto)
     {
-      Student student= studentRepository.save(toStudent(dto));
-      return toStudentResponseDto(student);
-    }
-
-    private Student toStudent(StudentDto dto)
-    {
-        Student student=new Student();
-        student.setFirstname(dto.firstname());
-        student.setLastname(dto.lastname());
-        student.setEmail(dto.email());
-
-        var school=new School();
-        school.setId(dto.schoolId());
-
-        student.setSchool(school);
-
-        return student;
-    }
-
-    private StudentResponseDto toStudentResponseDto(Student student)
-    {
-        return new StudentResponseDto(student.getFirstname(),student.getLastname(),student.getEmail());
+     return studentService.saveStudent(dto);
     }
 
     @GetMapping("/students")
-    public List<Student> getStudents()
+    public List<StudentResponseDto> getStudents()
     {
-        return studentRepository.findAll();
+        return studentService.getStudents();
     }
 
     @GetMapping("/students/{student-id}")
-    public Student getStudentById(@PathVariable("student-id") Integer id)
+    public StudentResponseDto getStudentById(@PathVariable("student-id") Integer id)
     {
-        return studentRepository.findById(id).orElse(new Student());
+        return studentService.getStudentById(id);
     }
 
     @GetMapping("/students/search/{student-name}")
-    public List<Student> getStudentsByName(@PathVariable("student-name") String name)
+    public List<StudentResponseDto> getStudentsByName(@PathVariable("student-name") String name)
     {
-        return studentRepository.findAllByFirstnameContaining(name);
+        return studentService.getStudentsByName(name);
     }
 
     @DeleteMapping("/students/{student-id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteStudent(@PathVariable("student-id") Integer id)
     {
-        studentRepository.deleteById(id);
+        studentService.deleteStudent(id);
     }
 }
