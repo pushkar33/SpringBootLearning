@@ -6,36 +6,46 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentMapperTest {
 
-    @BeforeAll
-    static void beforeAll() {
-        System.out.println("Inside the before all method");
-    }
-
-    @AfterAll
-    static void afterAll() {
-        System.out.println("Inside the after all method");
-    }
+   private StudentMapper mapper;
 
     @BeforeEach
     void setUp() {
-        System.out.println("Inside the before each method");
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.out.println("Inside the after each method");
+        mapper=new StudentMapper();
     }
 
     @Test
-    public void testMethod1()
-    {
-       System.out.println("My first test method");
-    }
+   public void shouldMapStudentDtoToStudent()
+   {
+      StudentDto dto=new StudentDto("John","Lemon","john@mail.com",1);
+      Student student=mapper.toStudent(dto);
 
-    @Test
-    public void testMethod2()
-    {
-        System.out.println("My second test method");
-    }
+       assertEquals(dto.firstname(),student.getFirstname());
+       assertEquals(dto.lastname(),student.getLastname());
+       assertEquals(dto.email(),student.getEmail());
+       assertNotNull(student.getSchool());
+       assertEquals(dto.schoolId(),student.getSchool().getId());
+   }
+
+   @Test
+   public void should_map_studentDto_to_student_when_studentDto_is_null()
+   {
+       var msg=assertThrows(NullPointerException.class,()->mapper.toStudent(null));
+       assertEquals( "The Student Dto Should Not Be Null",msg.getMessage());
+   }
+
+   @Test
+    public void shouldMapStudentToStudentResponseDto()
+   {
+       // Given
+       Student student=new Student("Gauri","Goyal","Gauri23@mail.com",18);
+
+       // When
+       StudentResponseDto dto=mapper.toStudentResponseDto(student);
+
+       // Then
+       assertEquals(student.getFirstname(),dto.firstname());
+       assertEquals(student.getLastname(),dto.lastname());
+       assertEquals(student.getEmail(),dto.email());
+   }
 
 }
